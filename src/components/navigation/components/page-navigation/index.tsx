@@ -18,7 +18,7 @@ const PageNavigation: React.FC = () => {
     return (
         <>
             {
-                pagesArray.map(page => {
+                pagesArray.filter(page => page !== 'NotFound').map(page => {
                     const handleClick = () => {
                         // eslint-disable-next-line @typescript-eslint/no-unused-expressions
                         isSideBarOpen && toggleSideBar();
