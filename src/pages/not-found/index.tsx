@@ -17,7 +17,7 @@ const NotFound: React.FC = () => {
                     justifyContent: 'center',
                 }}
             >
-                <Typography>Page Not Found</Typography>
+                <Typography variant='h3'>Page Not Found</Typography>
                 <Button
                     sx={{
                         backgroundColor: 'primary.main',

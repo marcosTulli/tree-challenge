@@ -12,7 +12,7 @@ const Lorem: React.FC = () => {
                     color: 'secondary.main'
                 }}
             >
-                <Typography>Lorem</Typography>
+                <Typography variant='h3'>Lorem</Typography>
             </Box>
         </Page>
     );

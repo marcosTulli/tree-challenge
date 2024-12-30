@@ -12,7 +12,7 @@ const Home: React.FC = () => {
                     color: 'secondary.main'
                 }}
             >
-                <Typography>Home</Typography>
+                <Typography variant='h3'>Home</Typography>
             </Box>
         </Page>
     );
