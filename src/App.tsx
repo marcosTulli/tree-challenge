@@ -1,9 +1,12 @@
 import { createBrowserRouter, RouteObject } from "react-router-dom";
-import Router from './providers/Router';
+import 'react-toastify/dist/ReactToastify.css';
+import RouterComponent from './context/Router'; // Assuming this is the path to RouterComponent
 import { Tree, Home, Lorem } from './pages';
 import { Slugs } from "./constants";
-import './App.scss';
 import Navigation from "./components/navigation";
+import '@styles/global.scss';
+import { Box } from "@mui/material";
+import ContextProvider from "./context/ContextProvider";
 
 const routes: RouteObject[] = [
   {
@@ -22,13 +25,15 @@ const routes: RouteObject[] = [
 
 const router = createBrowserRouter(routes);
 
-function App() {
+const App = () => {
   return (
-    <div>
-      <Navigation />
-      <Router router={router} />
-    </div>
+    <ContextProvider>
+      <Box sx={{ height: '100vh', minWidth: '100%' }} >
+        <Navigation />
+        <RouterComponent router={router} />
+      </Box>
+    </ContextProvider>
   );
-}
+};
 
 export default App;

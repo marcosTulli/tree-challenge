@@ -1,3 +1,3 @@
-export { default as Home } from './Home';
-export { default as Tree } from './Tree';
-export { default as Lorem } from './Lorem';
+export { default as Home } from './home';
+export { default as Tree } from './tree';
+export { default as Lorem } from './lorem';
