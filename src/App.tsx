@@ -1,31 +1,22 @@
 import { createBrowserRouter, RouteObject } from "react-router-dom";
 import Router from './providers/Router';
-import './App.css';  // Import the CSS file for styling
-
-const Home = () => {
-  return (
-    <div>
-      HOME
-    </div>
-  );
-};
-
-const Tree = () => {
-  return (
-    <div>
-      TREE
-    </div>
-  );
-};
+import { Tree, Home, Lorem } from './pages';
+import { Slugs } from "./constants";
+import './App.scss';
+import Navigation from "./components/navigation";
 
 const routes: RouteObject[] = [
   {
-    path: '/',
+    path: Slugs.ROOT,
     element: <Home />
   },
   {
-    path: '/tree',
+    path: Slugs.TREE,
     element: <Tree />,
+  },
+  {
+    path: Slugs.LOREM,
+    element: <Lorem />,
   },
 ];
 
@@ -33,7 +24,10 @@ const router = createBrowserRouter(routes);
 
 function App() {
   return (
-    <Router router={router} />
+    <div>
+      <Navigation />
+      <Router router={router} />
+    </div>
   );
 }
 
