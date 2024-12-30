@@ -3,7 +3,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import RouterComponent from './context/Router'; // Assuming this is the path to RouterComponent
 import { Tree, Home, Lorem } from './pages';
 import { Slugs } from "./constants";
-import Navigation from "./components/navigation";
 import '@styles/global.scss';
 import { Box } from "@mui/material";
 import ContextProvider from "./context/ContextProvider";
@@ -29,7 +28,6 @@ const App = () => {
   return (
     <ContextProvider>
       <Box sx={{ height: '100vh', minWidth: '100%' }} >
-        <Navigation />
         <RouterComponent router={router} />
       </Box>
     </ContextProvider>
