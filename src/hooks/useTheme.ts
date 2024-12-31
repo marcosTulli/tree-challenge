@@ -3,7 +3,7 @@ import { createTheme } from "@mui/material";
 const useTheme = () => {
 
     const baseColors = {
-        white: { main: '#f2f2f2' },
+        white: { main: '#f2f2f1' },
         black: { main: '#22222' },
         gray: { main: '#595959' },
     };
@@ -28,7 +28,7 @@ const useTheme = () => {
 
     };
 
-    // eslint-disable-next-line no-constant-condition
+     
     const themeObject = true ? dark : light;
     const theme = createTheme(themeObject);
 

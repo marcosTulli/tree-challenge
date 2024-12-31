@@ -1,20 +1,12 @@
 import React from 'react';
-import { Box, Typography } from '@mui/material';
 import Page from '@/components/common/page';
+import TreeBody from '@/components/pages/tree';
 
 const Tree: React.FC = () => {
     return (
         <Page>
-            <Box
-                sx={{
-                    fontSize: '2rem',
-                    fontWeight: '700',
-                    color: 'secondary.main'
-                }}
-            >
-                <Typography>Tree</Typography>
-            </Box>
-        </Page>
+            <TreeBody/>
+         </Page>
     );
 };
 
