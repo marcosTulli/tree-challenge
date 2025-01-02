@@ -1,6 +1,6 @@
 import React from 'react';
 import Page from '@/components/common/page';
-import TreeBody from '@/components/pages/tree';
+import TreeBody from '@/components/tree';
 
 const Tree: React.FC = () => {
     return (

@@ -14,7 +14,7 @@ interface IEditState {
     closeRemoveDialog: () => void;
 }
 
-export const useDialogs = create<IEditState>()((set) => ({
+const useDialogs = create<IEditState>()((set) => ({
     ...initialState,
     openCreateDialog: () => set(() => ({ isOpenCreateDialog: true })),
     closeCreateDialog: () => set(() => ({ isOpenCreateDialog: false })),

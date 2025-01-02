@@ -5,27 +5,25 @@ import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
-import { useDialogs } from '../hooks';
+import { useDialogs, useNode, useTree } from '../hooks';
+import { INode } from '@/models';
 
-const CreateNodeDialog =()=> {
-    const {isOpenCreateDialog, closeCreateDialog} = useDialogs()
+interface ICreateNodeDialogProps { 
+  node: INode 
+}
+const CreateNodeDialog:React.FC<ICreateNodeDialogProps> =({node})=> {
+    const {isOpenCreateDialog } = useDialogs()
+    const {handleCloseCreateDialog} = useNode()
+    const { addNode } = useTree()
 
   return (
     <React.Fragment>
       <Dialog
         open={isOpenCreateDialog}
-        onClose={closeCreateDialog}
+        onClose={handleCloseCreateDialog}
         PaperProps={{
           component: 'form',
-          onSubmit: (event: React.FormEvent<HTMLFormElement>) => {
-            event.preventDefault();
-            const formData = new FormData(event.currentTarget);
-            const formJson = Object.fromEntries((formData as any).entries());
-            const email = formJson.email;
-            console.log(email);
-            closeCreateDialog()
-            
-          },
+          onSubmit: (event: React.FormEvent<HTMLFormElement>)=> addNode({event, node}),
         }}
       >
         <DialogTitle>Nuevo Nodo</DialogTitle>
@@ -35,16 +33,15 @@ const CreateNodeDialog =()=> {
             required
             margin="dense"
             id="name"
-            name="email"
+            name="name"
             label="Nombre"
             type="text"
-            fullWidth
             variant="standard"
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={closeCreateDialog}>Cancelar</Button>
-          <Button type="submit">Crear</Button>
+          <Button onClick={handleCloseCreateDialog}>Cancelar</Button>
+          <Button  type='submit' variant='contained'>Crear</Button>
         </DialogActions>
       </Dialog>
     </React.Fragment>

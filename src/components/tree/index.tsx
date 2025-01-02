@@ -1,13 +1,16 @@
 import React from 'react';
 import { Box,  Container, Switch, Typography } from '@mui/material';
-import { useEditMode } from './hooks';
+import { useEditMode, useNode  } from './hooks';
 import CreateNodeDialog from './components/CreateNodeDialog';
 import RemoveNodeDialog from './components/RemoveNodeDialog';
-import Node from './components/Node';
+import Tree  from './components/Tree';
+import { INode } from '@/models';
 
 
 const TreeBody:React.FC = () => {
   const { toggleEdit} = useEditMode()
+  const {selectedNode}  = useNode()
+  console.log(selectedNode)
 
   return (
     <Container sx={{width:'100%', height:'100%' }}>
@@ -17,11 +20,11 @@ const TreeBody:React.FC = () => {
         </Box>
         <Typography variant='h3' color='secondary.main'>Árbol</Typography>
       </Box>
-      <Node />
-      <CreateNodeDialog/>
-      <RemoveNodeDialog/>
+      <Tree/>
+      <CreateNodeDialog node={selectedNode as INode}/>
+      <RemoveNodeDialog node={selectedNode as INode}/>
     </Container>
   );
 };
 
-export default TreeBody;
+export default TreeBody

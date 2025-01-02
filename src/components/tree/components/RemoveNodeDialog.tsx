@@ -5,17 +5,23 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-import { useDialogs } from '../hooks';
+import { useDialogs, useNode, useTree } from '../hooks';
+import { INode } from '@/models';
 
-const RemoveNodeDialog = ()=> {
-    const {isOpenRemoveDialog, closeRemoveDialog} = useDialogs()
+interface IRemoveNodeDialogProps { 
+  node: INode 
+}
+const RemoveNodeDialog: React.FC<IRemoveNodeDialogProps> = ({node})=> {
+    const {isOpenRemoveDialog } = useDialogs()
+    const {removeNode} = useTree()
+    const {handleCloseRemoveDialog} = useNode()
 
 
   return (
     <React.Fragment>
       <Dialog
         open={isOpenRemoveDialog}
-        onClose={closeRemoveDialog}
+        onClose={handleCloseRemoveDialog}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
@@ -28,8 +34,8 @@ const RemoveNodeDialog = ()=> {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={closeRemoveDialog}>Cancelar</Button>
-          <Button variant='contained' color='error'  onClick={closeRemoveDialog} autoFocus>
+          <Button onClick={handleCloseRemoveDialog}>Cancelar</Button>
+          <Button variant='contained' color='error'  onClick={()=> removeNode(node.id)} autoFocus>
             Aceptar
           </Button>
         </DialogActions>
