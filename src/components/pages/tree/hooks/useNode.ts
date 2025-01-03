@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-expressions */
 import React from 'react';
 import { useEditModeStore, useNodeStore, useDialogsStore, useTreeStore } from '../store';
 import { INode } from '@/models';
@@ -9,18 +10,26 @@ const useNode = () => {
 
 	const { enableEdit, toggleEdit } = useEditModeStore();
 	const { toggleReveal } = useTreeStore();
-	const { selectedNode, setSelectedNode, clearSelectedNode } = useNodeStore();
+	const {
+		displayOptions,
+		selectedNode,
+		setSelectedNode,
+		clearSelectedNode,
+		toggleOptions,
+	} = useNodeStore();
 	const { openCreateDialog, openRemoveDialog, closeCreateDialog, closeRemoveDialog } =
 		useDialogsStore();
 
 	const handleAddNodeClick = ({ node }: { node: INode }) => {
 		openCreateDialog();
 		setSelectedNode({ node });
+		displayOptions && toggleOptions();
 	};
 
 	const handleRemoveNodeClick = ({ node }: { node: INode }) => {
 		openRemoveDialog();
 		setSelectedNode({ node });
+		displayOptions && toggleOptions();
 	};
 
 	const handleCloseCreateDialog = () => {
@@ -50,6 +59,8 @@ const useNode = () => {
 		disableSubmit,
 		title,
 		enableEdit,
+		displayOptions,
+		toggleOptions,
 		handleAddNodeClick,
 		handleRemoveNodeClick,
 		handleCloseRemoveDialog,

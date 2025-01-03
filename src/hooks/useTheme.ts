@@ -10,7 +10,7 @@ const useTheme = () => {
 	const dark = {
 		palette: {
 			...baseColors,
-			primary: { main: '#1A4958' },
+			primary: { main: '#084061' },
 			secondary: { main: '#d1ffff', strong: '#0F9D6D' },
 			defaultBackground: { main: '#1A1A1A' },
 		},
