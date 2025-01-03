@@ -16,13 +16,13 @@ interface ITreeStore {
   id: string;
   title: string;
   children: INode[];
-  createNodeFor: (node: INode) => void;
+  createNode: (node: INode, parent: INode) => void;
   removeNode: (id: string) => void;
 }
 
 const useTreeStore = create<ITreeStore>()((set) => ({
   ...initialState,
-  createNodeFor: (node) => {
+  createNode: (node) => {
     set((state) => ({
       ...state,
       children: [...state.children, node]
@@ -36,5 +36,5 @@ const useTreeStore = create<ITreeStore>()((set) => ({
     })),
 }));
 
+export default useTreeStore;
 
-export default useTreeStore

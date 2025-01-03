@@ -11,7 +11,7 @@ const Node:React.FC<INodeProps> = ({node}) => {
 
   return (
         <Box 
-        // id={node.id}
+        id={node.id}
         sx={{
           bgcolor:'primary.main',
           width:'fit-Content',

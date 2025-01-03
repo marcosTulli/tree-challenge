@@ -10,7 +10,6 @@ import { INode } from '@/models';
 const TreeBody:React.FC = () => {
   const { toggleEdit} = useEditMode()
   const {selectedNode}  = useNode()
-  console.log(selectedNode)
 
   return (
     <Container sx={{width:'100%', height:'100%' }}>
