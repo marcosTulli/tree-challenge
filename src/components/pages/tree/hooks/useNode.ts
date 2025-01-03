@@ -1,39 +1,17 @@
-import { create } from 'zustand';
-import useDialogsStore from '../store/useDialogsStore';
-import { INode } from '@/models';
 import React from 'react';
-import { useEditModeStore } from '../store';
-
-const initialState = {
-	isCollapsed: false,
-	selectedNode: null,
-};
-
-interface INodeStore {
-	isCollapsed: boolean;
-	selectedNode: INode | null;
-	toggleReveal: () => void;
-	setSelectedNode: ({ node }: { node: INode }) => void;
-	clearSelectedNode: () => void;
-}
-
-const useNodeStore = create<INodeStore>()((set) => ({
-	...initialState,
-	toggleReveal: () => set((state) => ({ isCollapsed: !state.isCollapsed })),
-	setSelectedNode: ({ node }: { node: INode }) => set(() => ({ selectedNode: node })),
-	clearSelectedNode: () => set(() => ({ selectedNode: null })),
-}));
+import { useEditModeStore, useNodeStore, useDialogsStore, useTreeStore } from '../store';
+import { INode } from '@/models';
 
 const useNode = () => {
 	const [title, setTitle] = React.useState<string>('');
-	const { enableEdit, toggleEdit } = useEditModeStore();
-	const { toggleReveal, isCollapsed, selectedNode, setSelectedNode, clearSelectedNode } =
-		useNodeStore();
-	const { openCreateDialog, openRemoveDialog, closeCreateDialog, closeRemoveDialog } =
-		useDialogsStore();
-
 	const hasChildren = false;
 	const disableSubmit = title.length === 0;
+
+	const { enableEdit, toggleEdit } = useEditModeStore();
+	const { toggleReveal } = useTreeStore();
+	const { selectedNode, setSelectedNode, clearSelectedNode } = useNodeStore();
+	const { openCreateDialog, openRemoveDialog, closeCreateDialog, closeRemoveDialog } =
+		useDialogsStore();
 
 	const handleAddNodeClick = ({ node }: { node: INode }) => {
 		openCreateDialog();
@@ -62,20 +40,23 @@ const useNode = () => {
 		setTitle(event.target.value);
 	};
 
+	const handleReveal = ({ id }: { id: string }) => {
+		toggleReveal(id);
+	};
+
 	return {
 		hasChildren,
-		isCollapsed,
 		selectedNode,
 		disableSubmit,
 		title,
 		enableEdit,
-		toggleReveal,
 		handleAddNodeClick,
 		handleRemoveNodeClick,
 		handleCloseRemoveDialog,
 		handleCloseCreateDialog,
 		handleInput,
 		toggleEdit,
+		handleReveal,
 	};
 };
 

@@ -1,25 +1,25 @@
 import React from 'react';
 import { Box, Typography } from '@mui/material';
-import Actions from './Actions';
+import CreateActions from './CreateActions';
 import { INodeProps } from '@/models';
+import RevealActions from './RevealActions';
 
 const Parent: React.FC<INodeProps> = ({ node }) => {
 	return (
 		<Box
 			sx={{
-				bgcolor: 'primary.main',
 				width: 'fit-content',
-				padding: '0.5rem',
 				marginTop: '1rem',
 				display: 'flex',
-				alignItems: 'flex-start',
+				alignItems: 'center',
 				borderRadius: '4px',
 			}}
 		>
+			<RevealActions node={node} />
 			<Typography variant="body1" color="secondary.main">
 				{node.title}
 			</Typography>
-			<Actions node={node} />
+			<CreateActions node={node} />
 		</Box>
 	);
 };

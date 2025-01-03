@@ -6,7 +6,7 @@ import Children from './Children';
 
 const Node: React.FC<INodeProps> = ({ node }) => {
 	return (
-		<Box id={node.id}>
+		<Box id={node.id} onMouseEnter={() => console.log(node.id)}>
 			<Parent node={node} />
 			<Children node={node} />
 		</Box>
