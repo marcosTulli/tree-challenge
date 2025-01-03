@@ -8,39 +8,36 @@ import DialogTitle from '@mui/material/DialogTitle';
 import { useDialogs, useNode, useTree } from '../hooks';
 import { INode } from '@/models';
 
-interface IRemoveNodeDialogProps { 
-  node: INode 
+interface IRemoveNodeDialogProps {
+	node: INode;
 }
-const RemoveNodeDialog: React.FC<IRemoveNodeDialogProps> = ({node})=> {
-    const {isOpenRemoveDialog } = useDialogs()
-    const {removeNode} = useTree()
-    const {handleCloseRemoveDialog} = useNode()
+const RemoveNodeDialog: React.FC<IRemoveNodeDialogProps> = ({ node }) => {
+	const { isOpenRemoveDialog } = useDialogs();
+	const { removeNode } = useTree();
+	const { handleCloseRemoveDialog } = useNode();
 
-
-  return (
-    <React.Fragment>
-      <Dialog
-        open={isOpenRemoveDialog}
-        onClose={handleCloseRemoveDialog}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
-        <DialogTitle id="alert-dialog-title">
-            Eliminar nodo
-        </DialogTitle>
-        <DialogContent>
-          <DialogContentText id="alert-dialog-description">
-            Seguro que desea eliminar este nodo?
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleCloseRemoveDialog}>Cancelar</Button>
-          <Button variant='contained' color='error'  onClick={()=> removeNode(node.id)} autoFocus>
-            Aceptar
-          </Button>
-        </DialogActions>
-      </Dialog>
-    </React.Fragment>
-  );
-}
-export default RemoveNodeDialog
+	return (
+		<React.Fragment>
+			<Dialog
+				open={isOpenRemoveDialog}
+				onClose={handleCloseRemoveDialog}
+				aria-labelledby="alert-dialog-title"
+				aria-describedby="alert-dialog-description"
+			>
+				<DialogTitle id="alert-dialog-title">Eliminar nodo</DialogTitle>
+				<DialogContent>
+					<DialogContentText id="alert-dialog-description">
+						Seguro que desea eliminar este nodo?
+					</DialogContentText>
+				</DialogContent>
+				<DialogActions>
+					<Button onClick={handleCloseRemoveDialog}>Cancelar</Button>
+					<Button variant="contained" color="error" onClick={() => removeNode(node.id)} autoFocus>
+						Aceptar
+					</Button>
+				</DialogActions>
+			</Dialog>
+		</React.Fragment>
+	);
+};
+export default RemoveNodeDialog;

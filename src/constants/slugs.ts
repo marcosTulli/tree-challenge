@@ -1,8 +1,8 @@
- enum Slugs {  
-    ROOT = '/',
-    NOT_FOUND = '/*',
-    TREE = '/tree',
-    LOREM = '/lorem',
+enum Slugs {
+	ROOT = '/',
+	NOT_FOUND = '/*',
+	TREE = '/tree',
+	LOREM = '/lorem',
 }
 
-export default Slugs
+export default Slugs;

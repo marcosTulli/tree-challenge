@@ -6,22 +6,27 @@ import OpenSideBarButton from '../open-sidebar-button/OpenSidebarButton';
 import PageNavigation from '../page-navigation';
 
 const NavBar: React.FC = () => {
-    return (
-        <AppBar component="nav" sx={{
-            alignItems: 'left',
-        }}>
-            <Toolbar>
-                <OpenSideBarButton />
-                <Box sx={{
-                    display: { xs: 'none', sm: 'flex' },
-                    flexWrap: 'nowrap',
-                    // alignItems: 'center'
-                }}>
-                    <PageNavigation />
-                </Box>
-            </Toolbar>
-        </AppBar>
-    );
+	return (
+		<AppBar
+			component="nav"
+			sx={{
+				alignItems: 'left',
+			}}
+		>
+			<Toolbar>
+				<OpenSideBarButton />
+				<Box
+					sx={{
+						display: { xs: 'none', sm: 'flex' },
+						flexWrap: 'nowrap',
+						// alignItems: 'center'
+					}}
+				>
+					<PageNavigation />
+				</Box>
+			</Toolbar>
+		</AppBar>
+	);
 };
 
 export default NavBar;

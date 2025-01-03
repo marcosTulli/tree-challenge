@@ -1,1 +1,1 @@
-export type {default as INode} from './node'
+export type { default as INode } from './node';
