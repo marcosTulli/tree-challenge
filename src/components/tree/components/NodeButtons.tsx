@@ -15,12 +15,21 @@ interface INodeButtonsProps {
 const NodeButtons: React.FC<INodeButtonsProps> = ({ node }) => {
 	const { id } = node;
 	const { enableEdit } = useEditMode();
-	const { handleAddNodeClick, handleRemoveNodeClick, toggleReveal, isCollapsed, hasChildren } = useNode();
+	const {
+		handleAddNodeClick,
+		handleRemoveNodeClick,
+		toggleReveal,
+		isCollapsed,
+		hasChildren,
+	} = useNode();
 	const isParent = id === 'root';
 
 	return (
 		<Box sx={{ display: 'flex', gap: '0.8rem', paddingLeft: '1rem' }}>
-			<ButtonComponent onClick={() => handleRemoveNodeClick({ node })} display={enableEdit && !isParent}>
+			<ButtonComponent
+				onClick={() => handleRemoveNodeClick({ node })}
+				display={enableEdit && !isParent}
+			>
 				<RemoveIcon color="secondary" sx={{ width: '15px' }} />
 			</ButtonComponent>
 			<ButtonComponent onClick={() => handleAddNodeClick({ node })} display={enableEdit}>

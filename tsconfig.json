@@ -10,7 +10,8 @@
 			"@components/*": ["components/*"],
 			"@styles/*": ["styles/*"],
 			"@pages/*": ["pages/*"],
-			"@hooks/*": ["hooks/*"]
+			"@hooks/*": ["hooks/*"],
+			"@utils/*": ["utils/*"]
 		}
 	},
 	"files": [],

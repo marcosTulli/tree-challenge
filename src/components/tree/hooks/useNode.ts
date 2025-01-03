@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 import useDialogs from './useDialogs';
 import { INode } from '@/models';
+import React from 'react';
 
 const initialState = {
 	isCollapsed: false,
@@ -23,9 +24,13 @@ const useNodeStore = create<INodeStore>()((set) => ({
 }));
 
 const useNode = () => {
-	const { toggleReveal, isCollapsed, selectedNode, setSelectedNode, clearSelectedNode } = useNodeStore();
-	const { openCreateDialog, openRemoveDialog, closeCreateDialog, closeRemoveDialog } = useDialogs();
+	const [title, setTitle] = React.useState<string>('');
+	const { toggleReveal, isCollapsed, selectedNode, setSelectedNode, clearSelectedNode } =
+		useNodeStore();
+	const { openCreateDialog, openRemoveDialog, closeCreateDialog, closeRemoveDialog } =
+		useDialogs();
 	const hasChildren = false;
+	const disableSubmit = title.length === 0;
 
 	const handleAddNodeClick = ({ node }: { node: INode }) => {
 		openCreateDialog();
@@ -40,6 +45,7 @@ const useNode = () => {
 	const handleCloseCreateDialog = () => {
 		closeCreateDialog();
 		clearSelectedNode();
+		setTitle('');
 	};
 
 	const handleCloseRemoveDialog = () => {
@@ -47,15 +53,24 @@ const useNode = () => {
 		clearSelectedNode();
 	};
 
+	const handleInput = (
+		event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+	) => {
+		setTitle(event.target.value);
+	};
+
 	return {
 		hasChildren,
 		isCollapsed,
 		selectedNode,
+		disableSubmit,
+		title,
 		toggleReveal,
 		handleAddNodeClick,
 		handleRemoveNodeClick,
 		handleCloseRemoveDialog,
 		handleCloseCreateDialog,
+		handleInput,
 	};
 };
 

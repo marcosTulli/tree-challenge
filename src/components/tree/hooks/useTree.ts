@@ -1,24 +1,25 @@
+import { createId } from '@/utils';
 import useDialogs from './useDialogs';
 import useTreeStore from './useTreeStore';
 import { INode } from '@/models/index';
 
 const useTree = () => {
 	const { createNode, removeNode, rootNode } = useTreeStore();
-	const { closeCreateDialog } = useDialogs();
-	const createId = () => Date.now().toString();
+	const { closeCreateDialog, closeRemoveDialog } = useDialogs();
 
-	const addNode = ({ event, node }: { event: React.FormEvent<HTMLFormElement>; node: INode }) => {
-		event.preventDefault();
+	const add = ({ title, node }: { title: string; node: INode }) => {
 		const id = createId();
-		const formData = new FormData(event.currentTarget);
-		const formJson = Object.fromEntries((formData as any).entries());
-		const title = formJson.name;
 		const newNode = { id, title, children: [] };
 		createNode(newNode, node.id);
 		closeCreateDialog();
 	};
 
-	return { rootNode, removeNode, addNode };
+	const remove = (id: string) => {
+		removeNode(id);
+		closeRemoveDialog();
+	};
+
+	return { rootNode, removeNode, add, remove };
 };
 
 export default useTree;

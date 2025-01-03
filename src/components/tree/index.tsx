@@ -14,7 +14,12 @@ const TreeBody: React.FC = () => {
 		<Container sx={{ width: '100%', height: '100%' }}>
 			<Box
 				id="title "
-				sx={{ display: 'flex', justifyContent: 'center', padding: '2rem', alignItems: 'center' }}
+				sx={{
+					display: 'flex',
+					justifyContent: 'center',
+					padding: '2rem',
+					alignItems: 'center',
+				}}
 			>
 				<Box sx={{ paddingRight: '3rem' }}>
 					<Switch color="secondary" onChange={toggleEdit} />

@@ -3,20 +3,12 @@ import { Button, Tooltip, Typography } from '@mui/material';
 import useSideBar from '../../hooks/useSidebar';
 import * as pages from '@pages/index';
 import { useNavigate } from 'react-router-dom';
+import { slugify } from '@/utils';
 
 const PageNavigation: React.FC = () => {
 	const { isSideBarOpen, toggleSideBar } = useSideBar();
 	const pagesArray = Object.keys(pages);
 	const navigate = useNavigate();
-
-	const slugify = (text: string): string => {
-		const slugged = text
-			.toLowerCase()
-			.replace(/ /g, '-')
-			.replace(/[^\w-]+/g, '');
-		if (slugged === 'home') return '';
-		return slugged;
-	};
 
 	return (
 		<>

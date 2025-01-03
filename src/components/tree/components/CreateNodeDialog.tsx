@@ -11,21 +11,15 @@ import { INode } from '@/models';
 interface ICreateNodeDialogProps {
 	node: INode;
 }
+
 const CreateNodeDialog: React.FC<ICreateNodeDialogProps> = ({ node }) => {
 	const { isOpenCreateDialog } = useDialogs();
-	const { handleCloseCreateDialog } = useNode();
-	const { addNode } = useTree();
+	const { handleCloseCreateDialog, handleInput, title, disableSubmit } = useNode();
+	const { add } = useTree();
 
 	return (
 		<React.Fragment>
-			<Dialog
-				open={isOpenCreateDialog}
-				onClose={handleCloseCreateDialog}
-				PaperProps={{
-					component: 'form',
-					onSubmit: (event: React.FormEvent<HTMLFormElement>) => addNode({ event, node }),
-				}}
-			>
+			<Dialog open={isOpenCreateDialog} onClose={handleCloseCreateDialog}>
 				<DialogTitle>Nuevo Nodo</DialogTitle>
 				<DialogContent>
 					<TextField
@@ -37,11 +31,17 @@ const CreateNodeDialog: React.FC<ICreateNodeDialogProps> = ({ node }) => {
 						label="Nombre"
 						type="text"
 						variant="standard"
+						onChange={handleInput}
 					/>
 				</DialogContent>
 				<DialogActions>
 					<Button onClick={handleCloseCreateDialog}>Cancelar</Button>
-					<Button type="submit" variant="contained">
+					<Button
+						disabled={disableSubmit}
+						type="button"
+						variant="contained"
+						onClick={() => add({ title, node })}
+					>
 						Crear
 					</Button>
 				</DialogActions>

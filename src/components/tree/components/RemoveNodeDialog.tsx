@@ -13,7 +13,7 @@ interface IRemoveNodeDialogProps {
 }
 const RemoveNodeDialog: React.FC<IRemoveNodeDialogProps> = ({ node }) => {
 	const { isOpenRemoveDialog } = useDialogs();
-	const { removeNode } = useTree();
+	const { remove } = useTree();
 	const { handleCloseRemoveDialog } = useNode();
 
 	return (
@@ -32,7 +32,12 @@ const RemoveNodeDialog: React.FC<IRemoveNodeDialogProps> = ({ node }) => {
 				</DialogContent>
 				<DialogActions>
 					<Button onClick={handleCloseRemoveDialog}>Cancelar</Button>
-					<Button variant="contained" color="error" onClick={() => removeNode(node.id)} autoFocus>
+					<Button
+						variant="contained"
+						color="error"
+						onClick={() => remove(node.id)}
+						autoFocus
+					>
 						Aceptar
 					</Button>
 				</DialogActions>
