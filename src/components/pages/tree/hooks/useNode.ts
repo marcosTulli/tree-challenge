@@ -1,7 +1,8 @@
 import { create } from 'zustand';
-import useDialogs from './useDialogs';
+import useDialogsStore from '../store/useDialogsStore';
 import { INode } from '@/models';
 import React from 'react';
+import { useEditModeStore } from '../store';
 
 const initialState = {
 	isCollapsed: false,
@@ -25,10 +26,12 @@ const useNodeStore = create<INodeStore>()((set) => ({
 
 const useNode = () => {
 	const [title, setTitle] = React.useState<string>('');
+	const { enableEdit, toggleEdit } = useEditModeStore();
 	const { toggleReveal, isCollapsed, selectedNode, setSelectedNode, clearSelectedNode } =
 		useNodeStore();
 	const { openCreateDialog, openRemoveDialog, closeCreateDialog, closeRemoveDialog } =
-		useDialogs();
+		useDialogsStore();
+
 	const hasChildren = false;
 	const disableSubmit = title.length === 0;
 
@@ -65,12 +68,14 @@ const useNode = () => {
 		selectedNode,
 		disableSubmit,
 		title,
+		enableEdit,
 		toggleReveal,
 		handleAddNodeClick,
 		handleRemoveNodeClick,
 		handleCloseRemoveDialog,
 		handleCloseCreateDialog,
 		handleInput,
+		toggleEdit,
 	};
 };
 

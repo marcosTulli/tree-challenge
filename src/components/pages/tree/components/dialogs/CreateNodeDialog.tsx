@@ -5,15 +5,16 @@ import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
-import { useDialogs, useNode, useTree } from '../hooks';
+import { useNode, useTree } from '../../hooks';
 import { INode } from '@/models';
+import { useDialogsStore } from '../../store';
 
 interface ICreateNodeDialogProps {
 	node: INode;
 }
 
 const CreateNodeDialog: React.FC<ICreateNodeDialogProps> = ({ node }) => {
-	const { isOpenCreateDialog } = useDialogs();
+	const { isOpenCreateDialog } = useDialogsStore();
 	const { handleCloseCreateDialog, handleInput, title, disableSubmit } = useNode();
 	const { add } = useTree();
 

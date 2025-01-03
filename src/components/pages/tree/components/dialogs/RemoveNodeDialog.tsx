@@ -5,14 +5,15 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-import { useDialogs, useNode, useTree } from '../hooks';
+import { useNode, useTree } from '../../hooks';
 import { INode } from '@/models';
+import { useDialogsStore } from '../../store';
 
 interface IRemoveNodeDialogProps {
 	node: INode;
 }
 const RemoveNodeDialog: React.FC<IRemoveNodeDialogProps> = ({ node }) => {
-	const { isOpenRemoveDialog } = useDialogs();
+	const { isOpenRemoveDialog } = useDialogsStore();
 	const { remove } = useTree();
 	const { handleCloseRemoveDialog } = useNode();
 

@@ -1,11 +1,11 @@
 import { createId } from '@/utils';
-import useDialogs from './useDialogs';
-import useTreeStore from './useTreeStore';
+import useDialogsStore from '../store/useDialogsStore';
+import useTreeStore from '../store/useTreeStore';
 import { INode } from '@/models/index';
 
 const useTree = () => {
 	const { createNode, removeNode, rootNode } = useTreeStore();
-	const { closeCreateDialog, closeRemoveDialog } = useDialogs();
+	const { closeCreateDialog, closeRemoveDialog } = useDialogsStore();
 
 	const add = ({ title, node }: { title: string; node: INode }) => {
 		const id = createId();

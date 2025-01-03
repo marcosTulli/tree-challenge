@@ -9,9 +9,9 @@ interface IEditState {
 	toggleEdit: () => void;
 }
 
-export const useEditMode = create<IEditState>()((set) => ({
+export const useEditModeStore = create<IEditState>()((set) => ({
 	...initialState,
 	toggleEdit: () => set((state) => ({ enableEdit: !state.enableEdit })),
 }));
 
-export default useEditMode;
+export default useEditModeStore;

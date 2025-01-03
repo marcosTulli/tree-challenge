@@ -1,9 +1,9 @@
 import React from 'react';
 import { Box } from '@mui/material';
-import { useEditMode, useNode } from '../hooks';
+import { useNode } from '../../hooks';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
-import ButtonComponent from './Button';
+import ButtonComponent from '@/components/common/Button';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { INode } from '@/models';
@@ -12,16 +12,17 @@ interface INodeButtonsProps {
 	node: INode;
 }
 
-const NodeButtons: React.FC<INodeButtonsProps> = ({ node }) => {
+const Actions: React.FC<INodeButtonsProps> = ({ node }) => {
 	const { id } = node;
-	const { enableEdit } = useEditMode();
 	const {
 		handleAddNodeClick,
 		handleRemoveNodeClick,
 		toggleReveal,
 		isCollapsed,
 		hasChildren,
+		enableEdit,
 	} = useNode();
+
 	const isParent = id === 'root';
 
 	return (
@@ -49,4 +50,4 @@ const NodeButtons: React.FC<INodeButtonsProps> = ({ node }) => {
 	);
 };
 
-export default NodeButtons;
+export default Actions;
