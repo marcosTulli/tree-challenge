@@ -3,8 +3,7 @@ import useTreeStore from './useTreeStore';
 import { INode } from '@/models/index';
 
 const useTree = () => {
-	const { createNode, removeNode, children, id, title } = useTreeStore();
-	const rootNode = { children, id, title };
+	const { createNode, removeNode, rootNode } = useTreeStore();
 	const { closeCreateDialog } = useDialogs();
 	const createId = () => Date.now().toString();
 
@@ -15,7 +14,7 @@ const useTree = () => {
 		const formJson = Object.fromEntries((formData as any).entries());
 		const title = formJson.name;
 		const newNode = { id, title, children: [] };
-		createNode(newNode, node);
+		createNode(newNode, node.id);
 		closeCreateDialog();
 	};
 

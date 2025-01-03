@@ -3,8 +3,3 @@ export default interface INode {
 	title: string;
 	children: INode[];
 }
-
-export interface IActionableNode extends INode {
-	addChild: (child: INode) => void;
-	removeChild: (id: string) => void;
-}
