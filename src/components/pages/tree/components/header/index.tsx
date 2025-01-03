@@ -6,21 +6,25 @@ const Header: React.FC = () => {
 	const { toggleEdit } = useNode();
 	return (
 		<Box
-			id="title "
+			id="title"
 			component="header"
 			sx={{
 				display: 'flex',
-				justifyContent: 'center',
-				padding: '2rem',
 				alignItems: 'center',
+				padding: '2rem',
 			}}
 		>
-			<Box sx={{ paddingRight: '3rem' }}>
+			<Box sx={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+				<Typography component="label" color="secondary">
+					Editar
+				</Typography>
 				<Switch color="secondary" onChange={toggleEdit} />
 			</Box>
-			<Typography variant="h3" color="secondary.main">
-				Árbol
-			</Typography>
+			<Box sx={{ flex: 1, textAlign: 'center' }}>
+				<Typography variant="h3" color="secondary.main">
+					Árbol
+				</Typography>
+			</Box>
 		</Box>
 	);
 };

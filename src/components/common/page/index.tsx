@@ -22,7 +22,7 @@ const Page: React.FC<React.PropsWithChildren> = ({ children }) => (
 				pt: '1rem',
 			}}
 		>
-			<Container sx={{ width: '100%', height: '100%' }}>{children}</Container>
+			<Container sx={{ width: '100%', height: '100%', p: '2rem' }}>{children}</Container>
 		</Box>
 	</Box>
 );

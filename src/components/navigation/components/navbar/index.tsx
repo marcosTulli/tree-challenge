@@ -19,7 +19,6 @@ const NavBar: React.FC = () => {
 					sx={{
 						display: { xs: 'none', sm: 'flex' },
 						flexWrap: 'nowrap',
-						// alignItems: 'center'
 					}}
 				>
 					<PageNavigation />
