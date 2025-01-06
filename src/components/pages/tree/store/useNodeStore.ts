@@ -27,8 +27,7 @@ const useNodeStore = create<INodeStore>()((set) => ({
 	toggleOptions: () => set((state) => ({ displayOptions: !state.displayOptions })),
 	setSelectedNode: ({ node }: INodeProps) => set(() => ({ selectedNode: node })),
 	clearSelectedNode: () => set(() => ({ selectedNode: null })),
-	setCurrentNodeOnHover: ({ node }: INodeProps) =>
-		set(() => ({ currentNodeOnHover: node })),
+	setCurrentNodeOnHover: ({ node }: INodeProps) => set(() => ({ currentNodeOnHover: node })),
 	clearCurrentNodeOnHover: () => set(() => ({ currentNodeOnHover: null })),
 }));
 

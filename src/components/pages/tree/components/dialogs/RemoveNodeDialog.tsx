@@ -33,12 +33,7 @@ const RemoveNodeDialog: React.FC<IRemoveNodeDialogProps> = ({ node }) => {
 				</DialogContent>
 				<DialogActions>
 					<Button onClick={handleCloseRemoveDialog}>Cancelar</Button>
-					<Button
-						variant="contained"
-						color="error"
-						onClick={() => remove(node.id)}
-						autoFocus
-					>
+					<Button variant="contained" color="error" onClick={() => remove(node.id)} autoFocus>
 						Aceptar
 					</Button>
 				</DialogActions>
