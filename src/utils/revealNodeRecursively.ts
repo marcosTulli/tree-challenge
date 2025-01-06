@@ -1,6 +1,6 @@
 import { INode } from '@/models';
 
-export const revealNode = ({
+export const revealNodeRecursively = ({
 	currentNode,
 	id,
 }: {
@@ -18,7 +18,7 @@ export const revealNode = ({
 		return {
 			...currentNode,
 			children: currentNode.children.map((child) =>
-				revealNode({ currentNode: child, id }),
+				revealNodeRecursively({ currentNode: child, id }),
 			),
 		};
 	}

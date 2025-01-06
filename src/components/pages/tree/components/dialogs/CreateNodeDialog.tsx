@@ -19,11 +19,19 @@ const CreateNodeDialog: React.FC<ICreateNodeDialogProps> = ({ node }) => {
 	const { isOpenCreateDialog } = useDialogsStore();
 	const { handleCloseCreateDialog, handleInput, title, disableSubmit } = useNode();
 	const { rootNode } = useRootNode();
-	const { add } = useTree();
+	const { create } = useTree();
 
 	return (
 		<React.Fragment>
-			<Dialog open={isOpenCreateDialog} onClose={handleCloseCreateDialog}>
+			<Dialog
+				component={'form'}
+				onSubmit={(e) => {
+					e.preventDefault();
+					create({ title, node, rootNode: rootNode as INode });
+				}}
+				open={isOpenCreateDialog}
+				onClose={handleCloseCreateDialog}
+			>
 				<Box>
 					<DialogTitle fontSize={'15px'}>Nuevo Nodo</DialogTitle>
 					<DialogContent>
@@ -46,9 +54,8 @@ const CreateNodeDialog: React.FC<ICreateNodeDialogProps> = ({ node }) => {
 						<Button
 							sx={{ fontSze: '11px' }}
 							disabled={disableSubmit}
-							type="button"
+							type="submit"
 							variant="contained"
-							onClick={() => add({ title, node, rootNode: rootNode as INode })}
 						>
 							Crear
 						</Button>

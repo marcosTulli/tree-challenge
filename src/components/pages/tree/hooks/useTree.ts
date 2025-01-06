@@ -13,7 +13,7 @@ const useTree = () => {
 	const { removeNode } = useRemoveNode();
 	const { toggleRevealChildren } = useRevealChildren();
 
-	const add = ({ title, node, rootNode }: { title: string; node: INode; rootNode: INode }) => {
+	const create = ({ title, node, rootNode }: { title: string; node: INode; rootNode: INode }) => {
 		const id = createId();
 		const newNode: INode = { id, title, children: [], revealChildren: false };
 		createNode({ newNode, parentId: node.id, rootNode });
@@ -31,8 +31,7 @@ const useTree = () => {
 	return {
 		isLoading,
 		rootNode,
-		removeNode,
-		add,
+		create,
 		remove,
 	};
 };

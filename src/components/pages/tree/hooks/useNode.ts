@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-expressions */
 import React from 'react';
-import { useEditModeStore, useNodeStore, useDialogsStore, useTreeStore } from '../store';
+import { useEditModeStore, useNodeStore, useDialogsStore } from '../store';
 import { INode } from '@/models';
 
 const useNode = () => {
@@ -9,7 +9,7 @@ const useNode = () => {
 	const disableSubmit = title.length === 0;
 
 	const { enableEdit, toggleEdit } = useEditModeStore();
-	const { toggleReveal } = useTreeStore();
+
 	const {
 		displayOptions,
 		selectedNode,
@@ -20,6 +20,7 @@ const useNode = () => {
 		setCurrentNodeOnHover,
 		clearCurrentNodeOnHover,
 	} = useNodeStore();
+
 	const { openCreateDialog, openRemoveDialog, closeCreateDialog, closeRemoveDialog } =
 		useDialogsStore();
 
@@ -50,10 +51,6 @@ const useNode = () => {
 		setTitle(event.target.value);
 	};
 
-	const handleReveal = ({ id }: { id: string }) => {
-		toggleReveal(id);
-	};
-
 	return {
 		hasChildren,
 		selectedNode,
@@ -71,7 +68,6 @@ const useNode = () => {
 		handleCloseCreateDialog,
 		handleInput,
 		toggleEdit,
-		handleReveal,
 	};
 };
 

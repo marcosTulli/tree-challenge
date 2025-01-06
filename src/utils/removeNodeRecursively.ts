@@ -1,6 +1,6 @@
 import { INode } from '@/models';
 
-export const removeNode = ({
+export const removeNodeRecursively = ({
 	currentNode,
 	id,
 }: {
@@ -11,6 +11,6 @@ export const removeNode = ({
 		...currentNode,
 		children: currentNode.children
 			.filter((child) => child.id !== id)
-			.map((child) => removeNode({ currentNode: child, id })),
+			.map((child) => removeNodeRecursively({ currentNode: child, id })),
 	};
 };

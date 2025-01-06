@@ -1,7 +1,7 @@
-export { addNode } from './addNode';
-export { removeNode } from './removeNode';
+export { addNodeRecursively } from './createNodeRecursively';
+export { removeNodeRecursively } from './removeNodeRecursively';
 export { slugify } from './slugify';
 export { createId } from './createId';
-export { revealNode } from './revealNode';
+export { revealNodeRecursively } from './revealNodeRecursively';
 export { getLocalStorageData } from './getLocalStorageData';
 export { setLocalStorageData } from './setLocalStorageData';

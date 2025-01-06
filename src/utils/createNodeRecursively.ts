@@ -6,7 +6,7 @@ interface IAddNodeProps {
 	node: INode;
 }
 
-export const addNode = ({ currentNode, parentId, node }: IAddNodeProps): INode => {
+export const addNodeRecursively = ({ currentNode, parentId, node }: IAddNodeProps): INode => {
 	if (currentNode.id === parentId) {
 		return {
 			...currentNode,
@@ -16,7 +16,7 @@ export const addNode = ({ currentNode, parentId, node }: IAddNodeProps): INode =
 	return {
 		...currentNode,
 		children: currentNode.children.map((child) =>
-			addNode({ currentNode: child, parentId, node }),
+			addNodeRecursively({ currentNode: child, parentId, node }),
 		),
 	};
 };
