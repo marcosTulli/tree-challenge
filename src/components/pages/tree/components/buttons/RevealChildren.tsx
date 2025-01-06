@@ -1,16 +1,16 @@
 import React from 'react';
-import { useNode } from '../../hooks';
 import ButtonComponent from '@/components/common/Button';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { INodeProps } from '@/models';
+import useRevealChildren from '../../hooks/useRevealChildren';
 
 const RevealActions: React.FC<INodeProps> = ({ node }) => {
-	const { handleReveal } = useNode();
+	const { toggleRevealChildren } = useRevealChildren();
 
 	return (
 		<ButtonComponent
-			onClick={() => handleReveal({ id: node.id })}
+			onClick={() => toggleRevealChildren({ nodeId: node.id })}
 			display={true}
 			variant="text"
 			title={`${node.revealChildren ? 'Colapsar' : 'Desplegar'}`}

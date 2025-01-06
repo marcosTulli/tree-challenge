@@ -28,9 +28,8 @@ const ContextProvider: React.FC<React.PropsWithChildren> = ({ children }) => {
 					closeOnClick
 					rtl={false}
 					pauseOnFocusLoss
-					draggable
 					pauseOnHover={false}
-					theme="light"
+					theme={'dark'}
 				/>
 			</ThemeProvider>
 		</QueryClientProvider>

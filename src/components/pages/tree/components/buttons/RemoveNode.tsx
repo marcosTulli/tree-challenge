@@ -13,7 +13,7 @@ const RemoveNode: React.FC<INodeProps> = ({ node }) => {
 		<ButtonComponent
 			onClick={() => handleRemoveNodeClick({ node })}
 			display={!isParent && enableEdit}
-			variant={'contained'}
+			variant={'outlined'}
 			title="Eliminar nodo"
 		>
 			<RemoveIcon color="secondary" sx={{ fontSize: '12px' }} />

@@ -2,13 +2,20 @@ import React from 'react';
 import Page from '@/components/common/page';
 import { Header, Node, Dialogs } from '@/components/pages/tree/components';
 import { useTree } from '@/components/pages/tree/hooks';
+import { INode } from '@/models';
+import { Typography } from '@mui/material';
 
 const Tree: React.FC = () => {
-	const { rootNode } = useTree();
+	const { rootNode, isLoading } = useTree();
+
 	return (
 		<Page>
 			<Header />
-			<Node node={rootNode} />
+			{isLoading ? (
+				<Typography color="primary.mmain">Loading ...</Typography>
+			) : (
+				<Node node={rootNode as INode} />
+			)}
 			<Dialogs />
 		</Page>
 	);

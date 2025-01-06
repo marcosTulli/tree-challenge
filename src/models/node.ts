@@ -8,3 +8,9 @@ export interface INode {
 export interface INodeProps {
 	node: INode;
 }
+
+export interface ICreateNodeProps {
+	parentId: string;
+	newNode: INode;
+	rootNode: INode;
+}

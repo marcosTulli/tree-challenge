@@ -1,19 +1,26 @@
 import React from 'react';
 import { Box } from '@mui/material';
-import { INode } from '@/models';
+import { INodeProps } from '@/models';
 import { RevealChildren } from '../buttons';
+import { useNode } from '../../hooks';
 
-interface IRevealActionsProps {
-	node: INode;
-}
-
-const RevealActions: React.FC<IRevealActionsProps> = ({ node }) => {
+// TODO: Rename this
+const RevealActions: React.FC<INodeProps> = ({ node }) => {
+	const { currentNodeOnHover } = useNode();
 	return (
-		<Box sx={{ display: 'flex', gap: '0.8rem', paddingLeft: '1rem' }}>
-			{node.children.length ? (
+		<Box
+			sx={{
+				display: 'flex',
+				height: '30px',
+				gap: '0.8rem',
+				paddingLeft: '1rem',
+				mt: '2px',
+			}}
+		>
+			{node.children.length && currentNodeOnHover?.id === node.id ? (
 				<RevealChildren node={node} />
 			) : (
-				<Box sx={{ width: '30px' }}></Box>
+				<Box sx={{ width: '30px', height: '30px', display: 'flex' }} />
 			)}
 		</Box>
 	);

@@ -13,9 +13,12 @@ const useNode = () => {
 	const {
 		displayOptions,
 		selectedNode,
+		currentNodeOnHover,
 		setSelectedNode,
 		clearSelectedNode,
 		toggleOptions,
+		setCurrentNodeOnHover,
+		clearCurrentNodeOnHover,
 	} = useNodeStore();
 	const { openCreateDialog, openRemoveDialog, closeCreateDialog, closeRemoveDialog } =
 		useDialogsStore();
@@ -43,9 +46,7 @@ const useNode = () => {
 		clearSelectedNode();
 	};
 
-	const handleInput = (
-		event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-	) => {
+	const handleInput = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
 		setTitle(event.target.value);
 	};
 
@@ -60,6 +61,9 @@ const useNode = () => {
 		title,
 		enableEdit,
 		displayOptions,
+		currentNodeOnHover,
+		clearCurrentNodeOnHover,
+		setCurrentNodeOnHover,
 		toggleOptions,
 		handleAddNodeClick,
 		handleRemoveNodeClick,
