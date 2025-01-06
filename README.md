@@ -28,8 +28,8 @@ To get started with the project:
 
 2. **Clone the repository**:
    ```bash
-   git clone [your-repo-url]
-   cd embryoxite
+   git clone https://github.com/marcosTulli/tree-challenge
+   cd ./tree-challenge
    ```
 
 ## Scripts
