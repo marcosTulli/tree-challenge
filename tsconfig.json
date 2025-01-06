@@ -1,7 +1,19 @@
 {
-  "files": [],
-  "references": [
-    { "path": "./tsconfig.app.json" },
-    { "path": "./tsconfig.node.json" }
-  ]
+	"compilerOptions": {
+		"target": "ESNext",
+		"module": "ESNext",
+		"moduleResolution": "Bundler",
+		"skipLibCheck": true,
+		"baseUrl": "./src",
+		"paths": {
+			"@/*": ["*"],
+			"@components/*": ["components/*"],
+			"@styles/*": ["styles/*"],
+			"@pages/*": ["pages/*"],
+			"@hooks/*": ["hooks/*"],
+			"@utils/*": ["utils/*"]
+		}
+	},
+	"files": [],
+	"references": [{ "path": "./tsconfig.app.json" }, { "path": "./tsconfig.node.json" }]
 }
