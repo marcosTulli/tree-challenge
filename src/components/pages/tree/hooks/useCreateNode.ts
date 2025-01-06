@@ -6,7 +6,7 @@ const useCreateNode = () => {
 	const queryClient = useQueryClient();
 
 	const { mutate: createNode } = useMutation({
-		mutationFn: TreeServicesInstance.addChildNode,
+		mutationFn: TreeServicesInstance.createNode,
 		onSuccess: (_, variables) => {
 			toast(`Nuevo nodo ${variables.newNode.title} creado con éxito`, { type: 'success' });
 			queryClient.invalidateQueries({ queryKey: ['rootNode'] });

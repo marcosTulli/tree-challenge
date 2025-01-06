@@ -4,7 +4,7 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 const useRemoveNode = () => {
 	const queryClient = useQueryClient();
 	const { mutate: removeNode } = useMutation({
-		mutationFn: TreeServicesInstance.removeChildNode,
+		mutationFn: TreeServicesInstance.removeNode,
 		onSuccess: () => {
 			queryClient.invalidateQueries({ queryKey: ['rootNode'] });
 		},

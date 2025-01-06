@@ -13,7 +13,7 @@ class TreeServices {
 	private initializeRootNode: () => INode;
 	private getRootNode: () => INode;
 	private updateRootNode: (rootNode: INode) => INode;
-	public addChildNode: (props: ICreateNodeProps) => Promise<INode>;
+	public createNode: (props: ICreateNodeProps) => Promise<INode>;
 	public fetchRootNode: () => Promise<INode>;
 	public removeChildNode: (props: { nodeId: string }) => Promise<INode>;
 	public toggleRevealNode: (props: { nodeId: string }) => Promise<INode>;
@@ -38,11 +38,7 @@ class TreeServices {
 			return rootNode;
 		};
 
-		this.addChildNode = async ({
-			parentId,
-			newNode,
-			rootNode,
-		}: ICreateNodeProps): Promise<INode> => {
+		this.createNode = async ({ parentId, newNode, rootNode }: ICreateNodeProps): Promise<INode> => {
 			const updatedRootNode = addNodeRecursively({
 				currentNode: rootNode,
 				node: newNode,

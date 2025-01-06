@@ -4,7 +4,7 @@ import { useQuery } from '@tanstack/react-query';
 const useRootNode = () => {
 	const { data: rootNode, isLoading } = useQuery({
 		queryKey: ['rootNode'],
-		queryFn: TreeServicesInstance.fetchRootNode,
+		queryFn: TreeServicesInstance.getRootNode,
 	});
 
 	return { rootNode, isLoading };

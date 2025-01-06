@@ -12,7 +12,7 @@ const Tree: React.FC = () => {
 		<Page>
 			<Header />
 			{isLoading ? (
-				<Typography color="primary.mmain">Loading ...</Typography>
+				<Typography color="secondary">Loading ...</Typography> // TODO: Implement Skeleton
 			) : (
 				<Node node={rootNode as INode} />
 			)}
