@@ -15,7 +15,7 @@ class TreeServices {
 	private updateRootNode: (rootNode: INode) => INode;
 	public createNode: (props: ICreateNodeProps) => Promise<INode>;
 	public fetchRootNode: () => Promise<INode>;
-	public removeChildNode: (props: { nodeId: string }) => Promise<INode>;
+	public removeNode: (props: { nodeId: string }) => Promise<INode>;
 	public toggleRevealChildren: (props: { nodeId: string }) => Promise<INode>;
 
 	constructor() {
@@ -51,7 +51,7 @@ class TreeServices {
 			return this.getRootNode();
 		};
 
-		this.removeChildNode = async ({ nodeId }: { nodeId: string }): Promise<INode> => {
+		this.removeNode = async ({ nodeId }: { nodeId: string }): Promise<INode> => {
 			const rootNode = this.getRootNode();
 			const updatedRootNode = removeNodeRecursively({ currentNode: rootNode, id: nodeId });
 			return this.updateRootNode(updatedRootNode);
